@@ -1,15 +1,15 @@
 import { generateUploadButton, generateUploadDropzone } from "@uploadthing/react";
 
-// Mock Components for Development without Backend
+// Componentes Simulados para Desarrollo sin Backend
 const MockUploadButton = ({ onClientUploadComplete }) => (
   <button 
     type="button"
     className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
     onClick={() => {
-        // Simulate successful upload after 1 second
+        // Simular subida exitosa después de 1 segundo
         setTimeout(() => {
             if(onClientUploadComplete) {
-                onClientUploadComplete([{ url: "https://via.placeholder.com/150", name: "mock-file.jpg" }]);
+                onClientUploadComplete([{ url: "https://via.placeholder.com/150", name: "archivo-simulado.jpg" }]);
             }
         }, 1000);
     }}
@@ -24,20 +24,20 @@ const MockUploadDropzone = ({ onClientUploadComplete }) => (
       onClick={() => {
           setTimeout(() => {
               if(onClientUploadComplete) {
-                  onClientUploadComplete([{ url: "https://via.placeholder.com/150", name: "mock-file.jpg" }]);
+                  onClientUploadComplete([{ url: "https://via.placeholder.com/150", name: "archivo-simulado.jpg" }]);
               }
           }, 1000);
       }}
     >
-      <p className="text-gray-500">Haz clic para simular subida (Dev Mode)</p>
+      <p className="text-gray-500">Haz clic para simular subida (Modo Dev)</p>
     </div>
 );
 
-// Check if we are in "Mock Mode" (no real backend URL or uploadthing keys)
-// You can adjust this condition based on your needs
+// Verificar si estamos en "Modo Simulado" (sin URL de backend real o claves de uploadthing)
+// Puedes ajustar esta condición según tus necesidades
 const isMockMode = true; 
 
-// Ensure this URL points to your Express server endpoint
+// Asegúrate de que esta URL apunte al endpoint de tu servidor Express
 export const UploadButton = isMockMode ? MockUploadButton : generateUploadButton({
   url: "http://localhost:3000/api/uploadthing",
 });

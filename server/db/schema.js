@@ -2,9 +2,9 @@ import { pgTable, serial, text, timestamp, boolean, integer, jsonb } from 'drizz
 
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
-  clerkId: text('clerk_id').notNull().unique(),
+  clerkId: text('clerk_id').notNull().unique(), // ID de Clerk para autenticación
   email: text('email').notNull(),
-  role: text('role').default('student'), // 'student' | 'admin'
+  role: text('role').default('student'), // 'student' (estudiante) | 'admin' (administrador)
   fullName: text('full_name'),
   imageUrl: text('image_url'),
   createdAt: timestamp('created_at').defaultNow(),
@@ -17,12 +17,12 @@ export const courses = pgTable('courses', {
   slug: text('slug').notNull().unique(),
   description: text('description'),
   level: text('level').notNull(), // 'Básico' | 'Intermedio' | 'Avanzado'
-  price: integer('price').notNull(), // stored in cents
-  status: text('status').default('draft'), // 'draft' | 'published'
+  price: integer('price').notNull(), // almacenado en centavos
+  status: text('status').default('draft'), // 'draft' (borrador) | 'published' (publicado)
   coverImage: text('cover_image'),
   videoUrl: text('video_url'),
-  whatYouWillLearn: jsonb('what_you_will_learn').default([]),
-  syllabus: jsonb('syllabus').default([]),
+  whatYouWillLearn: jsonb('what_you_will_learn').default([]), // Lista de lo que aprenderás
+  syllabus: jsonb('syllabus').default([]), // Temario del curso
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 });
@@ -32,10 +32,10 @@ export const materials = pgTable('materials', {
   title: text('title').notNull(),
   type: text('type').notNull(), // 'E-Book' | 'Audio' | 'Pack'
   format: text('format'), // 'PDF' | 'MP3' | 'ZIP'
-  price: integer('price').notNull(), // stored in cents
-  status: text('status').default('active'), // 'active' | 'inactive'
+  price: integer('price').notNull(), // almacenado en centavos
+  status: text('status').default('active'), // 'active' (activo) | 'inactive' (inactivo)
   description: text('description'),
-  features: jsonb('features').default([]),
+  features: jsonb('features').default([]), // Características del material
   coverImage: text('cover_image'),
   fileUrl: text('file_url'),
   salesCount: integer('sales_count').default(0),

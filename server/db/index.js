@@ -3,11 +3,11 @@ import postgres from 'postgres';
 import * as schema from './schema.js';
 import 'dotenv/config';
 
-// Ensure DATABASE_URL is set in your .env file
+// Asegúrate de que DATABASE_URL esté configurado en tu archivo .env
 if (!process.env.DATABASE_URL) {
-  throw new Error('DATABASE_URL is missing');
+  throw new Error('Falta DATABASE_URL');
 }
 
-// Disable prefetch as it is not supported for "Transaction" pool mode
+// Deshabilita prefetch ya que no es compatible con el modo "Transaction" pool
 const client = postgres(process.env.DATABASE_URL, { prepare: false });
 export const db = drizzle(client, { schema });

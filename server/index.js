@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Uploadthing Endpoint
+// Endpoint de Uploadthing
 app.use(
 	"/api/uploadthing",
 	createRouteHandler({
@@ -22,12 +22,12 @@ app.use(
 	})
 );
 
-// Example API Routes
+// Rutas de API de Ejemplo
 app.get("/api/health", (req, res) => {
-	res.json({ status: "ok", message: "EETV API is running" });
+	res.json({ status: "ok", message: "API de EETV ejecutándose" });
 });
 
-// Users
+// Usuarios
 app.get("/api/users", async (req, res) => {
 	try {
 		const allUsers = await db.select().from(users);
@@ -37,7 +37,7 @@ app.get("/api/users", async (req, res) => {
 	}
 });
 
-// Courses
+// Cursos
 app.get("/api/courses", async (req, res) => {
 	try {
 		const allCourses = await db.select().from(courses);
@@ -47,7 +47,7 @@ app.get("/api/courses", async (req, res) => {
 	}
 });
 
-// Materials
+// Materiales
 app.get("/api/materials", async (req, res) => {
 	try {
 		const allMaterials = await db.select().from(materials);
@@ -59,5 +59,5 @@ app.get("/api/materials", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-	console.log(`🚀 Server running on port ${PORT}`);
+	console.log(`🚀 Servidor corriendo en el puerto ${PORT}`);
 });

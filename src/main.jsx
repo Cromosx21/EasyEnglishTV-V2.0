@@ -6,7 +6,7 @@ import './index.css'
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
-// Mock Provider for Development without Keys
+// Proveedor Simulado para Desarrollo sin Claves
 const MockClerkProvider = ({ children }) => {
   return <>{children}</>;
 };
@@ -14,7 +14,7 @@ const MockClerkProvider = ({ children }) => {
 const isDevWithoutKeys = !PUBLISHABLE_KEY || PUBLISHABLE_KEY.includes('PLACEHOLDER');
 
 if (isDevWithoutKeys) {
-  console.warn("⚠️ Running in Mock Mode: Clerk Keys missing. Auth features will be simulated.");
+  console.warn("⚠️ Ejecutando en Modo Simulado: Faltan las claves de Clerk. Las funciones de autenticación serán simuladas.");
 }
 
 const Provider = isDevWithoutKeys ? MockClerkProvider : ClerkProvider;

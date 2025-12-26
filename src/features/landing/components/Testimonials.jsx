@@ -1,10 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
 	Avatar,
 	AvatarFallback,
 	AvatarImage,
 } from "@/components/ui/common/Avatar";
-import { Star, Quote, ArrowUp, ArrowDown } from "lucide-react";
+import {
+	Star,
+	Quote,
+	ArrowUp,
+	ArrowDown,
+	ArrowLeft,
+	ArrowRight,
+} from "lucide-react";
 
 const testimonials = [
 	{
@@ -47,6 +54,24 @@ const testimonials = [
 
 export default function Testimonials() {
 	const [activeIndex, setActiveIndex] = useState(0);
+	const [isMobile, setIsMobile] = useState(false);
+
+	// Touch handling state
+	const touchStart = useRef(null);
+	const touchEnd = useRef(null);
+
+	// Minimum swipe distance (in px)
+	const minSwipeDistance = 50;
+
+	// Detect mobile
+	useEffect(() => {
+		const checkMobile = () => {
+			setIsMobile(window.innerWidth < 1024); // lg breakpoint
+		};
+		checkMobile();
+		window.addEventListener("resize", checkMobile);
+		return () => window.removeEventListener("resize", checkMobile);
+	}, []);
 
 	// Auto-scroll effect
 	useEffect(() => {
@@ -55,6 +80,33 @@ export default function Testimonials() {
 		}, 5000);
 		return () => clearInterval(interval);
 	}, []);
+
+	const onTouchStart = (e) => {
+		touchEnd.current = null;
+		// Use X for mobile (horizontal), Y for desktop (vertical)
+		touchStart.current = isMobile
+			? e.targetTouches[0].clientX
+			: e.targetTouches[0].clientY;
+	};
+
+	const onTouchMove = (e) => {
+		touchEnd.current = isMobile
+			? e.targetTouches[0].clientX
+			: e.targetTouches[0].clientY;
+	};
+
+	const onTouchEnd = () => {
+		if (!touchStart.current || !touchEnd.current) return;
+		const distance = touchStart.current - touchEnd.current;
+		const isPositiveSwipe = distance > minSwipeDistance;
+		const isNegativeSwipe = distance < -minSwipeDistance;
+
+		if (isPositiveSwipe) {
+			handleNext();
+		} else if (isNegativeSwipe) {
+			handlePrev();
+		}
+	};
 
 	const handleNext = () => {
 		setActiveIndex((prev) => (prev + 1) % testimonials.length);
@@ -84,25 +136,50 @@ export default function Testimonials() {
 				</div>
 
 				<div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-					{/* Left Side: Vertical Carousel */}
-					<div className="flex-1 w-full max-w-xl">
-						<div className="relative h-[600px] flex flex-col justify-center">
+					{/* Left Side: Carousel */}
+					<div
+						className="flex-1 w-full max-w-xl"
+						onTouchStart={onTouchStart}
+						onTouchMove={onTouchMove}
+						onTouchEnd={onTouchEnd}
+					>
+						<div className="relative h-[400px] lg:h-[600px] flex flex-col justify-center">
 							{/* Navigation Buttons */}
-							<div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-20 translate-x-12 lg:translate-x-0">
+							<div
+								className={`absolute z-20 flex gap-2 ${
+									isMobile
+										? "bottom-0 left-1/2 -translate-x-1/2 flex-row"
+										: "right-0 top-1/2 -translate-y-1/2 flex-col translate-x-12 lg:translate-x-0"
+								}`}
+							>
 								<button
 									onClick={handlePrev}
 									className="p-2 rounded-full bg-white shadow-md hover:bg-gray-50 text-rose-500 transition-colors"
 								>
-									<ArrowUp className="w-5 h-5" />
+									{isMobile ? (
+										<ArrowLeft className="w-5 h-5" />
+									) : (
+										<ArrowUp className="w-5 h-5" />
+									)}
 								</button>
-								<div className="flex flex-col gap-1 py-2 items-center">
+								<div
+									className={`flex gap-1 items-center ${
+										isMobile
+											? "flex-row px-2"
+											: "flex-col py-2"
+									}`}
+								>
 									{testimonials.map((_, idx) => (
 										<div
 											key={idx}
-											className={`w-1.5 rounded-full transition-all duration-300 ${
+											className={`rounded-full transition-all duration-300 ${
 												idx === activeIndex
-													? "h-6 bg-rose-500"
-													: "h-1.5 bg-brand-blue/20"
+													? isMobile
+														? "w-6 h-1.5 bg-rose-500"
+														: "h-6 w-1.5 bg-rose-500"
+													: isMobile
+													? "w-1.5 h-1.5 bg-brand-blue/20"
+													: "h-1.5 w-1.5 bg-brand-blue/20"
 											}`}
 										/>
 									))}
@@ -111,11 +188,15 @@ export default function Testimonials() {
 									onClick={handleNext}
 									className="p-2 rounded-full bg-white shadow-md hover:bg-gray-50 text-rose-500 transition-colors"
 								>
-									<ArrowDown className="w-5 h-5" />
+									{isMobile ? (
+										<ArrowRight className="w-5 h-5" />
+									) : (
+										<ArrowDown className="w-5 h-5" />
+									)}
 								</button>
 							</div>
 
-							{/* Cards Stack */}
+							{/* Cards Stack/Slider */}
 							<div className="relative w-full h-[400px]">
 								{testimonials.map((testimonial, index) => {
 									// Calculate position relative to active index
@@ -126,43 +207,79 @@ export default function Testimonials() {
 										testimonials.length;
 
 									let style = {};
-									let zIndex = 0;
-									let opacity = 0;
 
-									if (position === 0) {
-										// Active card
-										style = {
-											transform: "translateY(0) scale(1)",
-											zIndex: 30,
-											opacity: 1,
-										};
-									} else if (position === 1) {
-										// Next card (below)
-										style = {
-											transform:
-												"translateY(110px) scale(0.95)",
-											zIndex: 20,
-											opacity: 0.6,
-										};
-									} else if (
-										position ===
-										testimonials.length - 1
-									) {
-										// Previous card (above)
-										style = {
-											transform:
-												"translateY(-110px) scale(0.95)",
-											zIndex: 20,
-											opacity: 0.6,
-										};
+									if (isMobile) {
+										// Mobile: Horizontal Slide Logic
+										if (position === 0) {
+											// Active
+											style = {
+												transform:
+													"translateX(0) scale(1)",
+												zIndex: 30,
+												opacity: 1,
+											};
+										} else if (position === 1) {
+											// Next
+											style = {
+												transform:
+													"translateX(100%) scale(0.9)",
+												zIndex: 20,
+												opacity: 0.5,
+											};
+										} else if (
+											position ===
+											testimonials.length - 1
+										) {
+											// Prev
+											style = {
+												transform:
+													"translateX(-100%) scale(0.9)",
+												zIndex: 20,
+												opacity: 0.5,
+											};
+										} else {
+											// Hidden
+											style = {
+												transform:
+													"translateX(200%) scale(0.8)",
+												zIndex: 10,
+												opacity: 0,
+											};
+										}
 									} else {
-										// Hidden cards
-										style = {
-											transform:
-												"translateY(200px) scale(0.9)",
-											zIndex: 10,
-											opacity: 0,
-										};
+										// Desktop: Vertical Stack Logic (Original)
+										if (position === 0) {
+											style = {
+												transform:
+													"translateY(0) scale(1)",
+												zIndex: 30,
+												opacity: 1,
+											};
+										} else if (position === 1) {
+											style = {
+												transform:
+													"translateY(110px) scale(0.95)",
+												zIndex: 20,
+												opacity: 0.6,
+											};
+										} else if (
+											position ===
+											testimonials.length - 1
+										) {
+											style = {
+												transform:
+													"translateY(-110px) scale(0.95)",
+												zIndex: 20,
+												opacity: 0.6,
+											};
+										} else {
+											style = {
+												transform:
+													"translateY(200px) scale(0.9)",
+												zIndex: 10,
+												opacity: 0,
+											};
+										}
 									}
 
 									return (
