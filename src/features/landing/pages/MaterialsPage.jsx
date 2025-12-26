@@ -3,6 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/common/Button";
 import { Search, ShoppingCart, Filter, BookOpen } from "lucide-react";
 
+/**
+ * Datos simulados de materiales (libros, guías, audios).
+ * Representa la base de datos de productos disponibles.
+ */
 const materialsData = [
 	{
 		id: 1,
@@ -56,12 +60,27 @@ const materialsData = [
 	},
 ];
 
+/**
+ * Componente MaterialsPage
+ * 
+ * Muestra una galería de materiales educativos con opciones de filtrado, búsqueda y ordenamiento.
+ * Implementa la lógica de carrito de compras (simulada con redirección al login).
+ */
 export default function MaterialsPage() {
     const navigate = useNavigate();
+    
+    // --- ESTADOS DE FILTROS ---
+    // Categorías seleccionadas para filtrar (ej: ['Inglés Básico A1'])
     const [selectedCategories, setSelectedCategories] = useState([]);
+    // Orden de visualización ('newest' o 'oldest')
     const [sortOrder, setSortOrder] = useState('newest');
+    // Texto de búsqueda
     const [searchQuery, setSearchQuery] = useState('');
 
+    /**
+     * Maneja la selección/deselección de categorías en el filtro lateral.
+     * Si la categoría ya está seleccionada, la remueve; si no, la agrega.
+     */
     const handleCategoryChange = (category) => {
         setSelectedCategories(prev => 
             prev.includes(category) 
@@ -70,27 +89,41 @@ export default function MaterialsPage() {
         );
     };
 
+    /**
+     * Lógica principal de filtrado y ordenamiento.
+     * Combina filtros de categoría, búsqueda por texto y ordenamiento por ID (simulando fecha).
+     */
     const filteredMaterials = materialsData
         .filter(material => {
+            // Filtrar por categoría (si no hay ninguna seleccionada, muestra todo)
             const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(material.level);
+            // Filtrar por texto de búsqueda (case-insensitive)
             const matchesSearch = material.title.toLowerCase().includes(searchQuery.toLowerCase());
             return matchesCategory && matchesSearch;
         })
         .sort((a, b) => {
+            // Ordenar resultados
             if (sortOrder === 'newest') return b.id - a.id;
             if (sortOrder === 'oldest') return a.id - b.id;
             return 0;
         });
 
+    /**
+     * Maneja el clic en "Añadir al carrito".
+     * Previene la navegación al detalle del producto y redirige al login.
+     */
     const handleAddToCart = (e, materialId) => {
-        e.preventDefault();
-        e.stopPropagation();
-        navigate('/auth/login');
+        e.preventDefault(); // Evitar navegación del Link padre
+        e.stopPropagation(); // Detener propagación del evento
+        navigate('/auth/login'); // Redirigir al usuario
     };
 
 	return (
 		<div className="bg-gray-50 min-h-screen pb-20">
-			{/* Banner */}
+			{/* 
+              --- BANNER PROMOCIONAL ---
+              Sección superior llamativa con ofertas.
+            */}
 			<section className="bg-brand-yellow pt-32 py-12 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -105,7 +138,10 @@ export default function MaterialsPage() {
 			</section>
 
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 flex flex-col lg:flex-row gap-8">
-				{/* Sidebar Filters */}
+				{/* 
+                  --- SIDEBAR DE FILTROS ---
+                  Columna lateral con opciones para filtrar por categoría y fecha.
+                */}
 				<aside className="w-full lg:w-64 shrink-0 space-y-8">
 					<div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
 						<h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -114,6 +150,7 @@ export default function MaterialsPage() {
                         </h3>
 						
                         <div className="space-y-6">
+                            {/* Filtro de Categorías */}
                             <div>
                                 <h4 className="text-sm font-bold text-gray-700 mb-3">Categoría</h4>
                                 <div className="space-y-2">
@@ -131,6 +168,7 @@ export default function MaterialsPage() {
                                 </div>
                             </div>
 
+                            {/* Filtro de Ordenamiento (Fecha) */}
                             <div>
                                 <h4 className="text-sm font-bold text-gray-700 mb-3">Fecha</h4>
                                 <div className="space-y-2">
@@ -160,8 +198,12 @@ export default function MaterialsPage() {
 					</div>
 				</aside>
 
-				{/* Grid */}
+				{/* 
+                  --- GRILLA DE PRODUCTOS ---
+                  Área principal donde se muestran las tarjetas de los materiales.
+                */}
 				<div className="flex-1">
+                    {/* Barra de búsqueda y contador de resultados */}
                     <div className="flex justify-between items-center mb-6">
                         <p className="text-gray-500 text-sm">Mostrando {filteredMaterials.length} resultados</p>
                         <div className="relative">
@@ -176,6 +218,7 @@ export default function MaterialsPage() {
                         </div>
                     </div>
 
+                    {/* Grid de Cards */}
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 						{filteredMaterials.map((material) => (
 							<Link
@@ -183,6 +226,7 @@ export default function MaterialsPage() {
                                 key={material.id}
 								className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100 flex flex-col cursor-pointer"
 							>
+                                {/* Imagen del producto con etiqueta de descuento */}
 								<div className={`aspect-[3/4] rounded-xl bg-${material.image}-100 mb-4 relative overflow-hidden group-hover:scale-[1.02] transition-transform`}>
                                     <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
                                         {material.discount}% DCTO
@@ -192,12 +236,14 @@ export default function MaterialsPage() {
                                     </div>
                                 </div>
                                 
+                                {/* Información del producto */}
 								<div className="flex-1 flex flex-col">
                                     <h3 className="font-bold text-gray-900 leading-tight mb-1 group-hover:text-brand-blue transition-colors">
                                         {material.title}
                                     </h3>
                                     <p className="text-xs text-gray-500 mb-4">{material.level}</p>
                                     
+                                    {/* Precio y Botón de compra */}
                                     <div className="mt-auto flex items-end justify-between">
                                         <div>
                                             <p className="text-xs text-gray-400 line-through">S/ {material.originalPrice.toFixed(2)}</p>
