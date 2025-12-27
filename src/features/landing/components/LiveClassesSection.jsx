@@ -79,44 +79,31 @@ export default function LiveClassesSection() {
 
 					{/* Visual Content */}
 					<div className="flex-1 relative order-1 lg:order-2 w-full">
-						<div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-[6px] border-white/10 bg-gray-900 aspect-video group">
-							{/* Fake Interface Header */}
-							<div className="absolute top-0 left-0 right-0 h-12 bg-black/40 backdrop-blur-md flex items-center px-6 justify-between z-20">
-								<div className="flex gap-2">
-									<div className="w-3 h-3 rounded-full bg-red-500"></div>
-									<div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-									<div className="w-3 h-3 rounded-full bg-green-500"></div>
-								</div>
-								<div className="text-xs text-white/50 font-mono">
-									LIVE SESSION • 00:24:15
-								</div>
-							</div>
+						<div className="max-w-xl relative rounded-[2.5rem] overflow-hidden shadow-2xl border-[6px] border-white/10 bg-gray-900 aspect-video group">
+							{/* Video Youtube */}
+							<iframe
+								className="w-full h-full"
+								src="https://www.youtube.com/embed/SB6zlm-Zm1w"
+								title="Aprende a usar los PRONOMBRES POSESIVOS en Inglés 👩🏻‍🏫 Inglés con Amor 12 ❤️"
+								frameborder="0"
+								allow="accelerometer autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								referrerpolicy="strict-origin-when-cross-origin"
+								allowfullscreen
+							></iframe>
 
-							{/* Video Placeholder */}
-							<div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-								<div className="text-center opacity-30">
-									<span className="text-6xl">👨‍🏫</span>
-									<p className="mt-4 text-white font-bold">
-										Teacher John
-									</p>
-								</div>
-
-								{/* Play Button Overlay */}
-								<div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors cursor-pointer">
-									<div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 shadow-lg group-hover:scale-110 transition-transform">
-										<Play className="w-8 h-8 text-white fill-current ml-1" />
-									</div>
-								</div>
-							</div>
 
 							{/* Floating Student Bubbles */}
-							<div className="absolute bottom-6 right-6 flex -space-x-4 z-20">
+							<div className="absolute bottom-4 right-6 flex -space-x-4 z-20">
 								{[1, 2, 3].map((i) => (
 									<div
 										key={i}
 										className="w-12 h-12 rounded-full border-2 border-brand-dark bg-gray-200 flex items-center justify-center overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform"
 									>
-										<span className="text-sm">👤</span>
+										<img
+											src={`/src/assets/Profile/Profile_${i}.png`}
+											alt={`Student ${i}`}
+											className="w-full h-full object-cover"
+										/>
 									</div>
 								))}
 								<div className="w-12 h-12 rounded-full border-2 border-brand-dark bg-brand-pink flex items-center justify-center text-white font-bold shadow-lg z-10">

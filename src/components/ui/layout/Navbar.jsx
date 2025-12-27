@@ -33,12 +33,7 @@ export default function Navbar() {
 								className="flex items-center gap-2"
 								onClick={() => setIsMobileMenuOpen(false)}
 							>
-								<div className="bg-brand-blue text-white p-2 rounded-lg font-bold text-xl">
-									EE
-								</div>
-								<span className="text-2xl font-bold text-brand-dark tracking-tight">
-									EETV
-								</span>
+								<img src="/src/assets/logo.svg" alt="Logo de la página web" />
 							</Link>
 						</div>
 

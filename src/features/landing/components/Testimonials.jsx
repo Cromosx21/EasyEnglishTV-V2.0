@@ -357,14 +357,20 @@ export default function Testimonials() {
 							<div className="absolute -top-8 -right-8 bg-white p-4 rounded-xl shadow-lg animate-bounce delay-1000">
 								<span className="text-3xl">👍</span>
 							</div>
-							<div className="absolute bottom-12 -left-12 bg-white p-4 rounded-xl shadow-lg animate-bounce delay-500">
+							<div className="absolute bottom-0 -left-12 bg-white p-4 rounded-xl shadow-lg animate-bounce delay-500">
 								<div className="flex items-center gap-2">
 									<div className="flex -space-x-2">
 										{[1, 2, 3].map((i) => (
 											<div
 												key={i}
-												className="w-8 h-8 rounded-full bg-gray-200 border-2 border-white"
-											></div>
+												className="w-8 h-8 rounded-full bg-gray-200"
+											>
+												<img
+													src={`/src/assets/Profile/Profile_${i}.png`}
+													alt="Perfil del estudiante"
+													className="w-full h-full rounded-full object-cover"
+												/>
+											</div>
 										))}
 									</div>
 									<span className="text-sm font-bold text-brand-dark">

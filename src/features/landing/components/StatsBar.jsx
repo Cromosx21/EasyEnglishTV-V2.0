@@ -8,24 +8,27 @@ const stats = [
 
 export default function StatsBar() {
   return (
-    <div className="bg-brand-light/50 backdrop-blur-sm pt-12 pb-16 relative z-10 -mt-10 mx-4 sm:mx-8 rounded-3xl shadow-xl border border-white/50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
-          {stats.map((stat) => (
-            <div key={stat.id} className="flex flex-col items-center justify-center p-6 bg-white/60 backdrop-blur-md rounded-2xl hover:shadow-2xl transition-all duration-300 border border-white/60 group hover:-translate-y-1">
-              <div className="p-4 bg-brand-yellow/20 rounded-full text-brand-dark mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <stat.icon className="w-8 h-8" />
-              </div>
-              <dd className="text-4xl font-extrabold text-brand-blue mb-1 group-hover:text-brand-pink transition-colors">
-                {stat.value}
-              </dd>
-              <dt className="text-sm font-bold text-gray-600 uppercase tracking-wide">
-                {stat.name}
-              </dt>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
+		<div className=" backdrop-blur-sm py-10 relative">
+			<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+					{stats.map((stat) => (
+						<div
+							key={stat.id}
+							className="flex flex-col items-center justify-center p-6 bg-white/60 backdrop-blur-md rounded-2xl hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 border border-slate-200"
+						>
+							<div className="p-4 group-hover:bg-brand-pink/20 rounded-full text-brand-dark mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all ease-in-out duration-300">
+								<stat.icon className="w-8 h-8" />
+							</div>
+							<dd className="text-4xl font-extrabold text-brand-blue mb-1 group-hover:text-brand-pink transition-colors">
+								{stat.value}
+							</dd>
+							<dt className="text-sm font-bold text-gray-600 uppercase tracking-wide">
+								{stat.name}
+							</dt>
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+  );
 }

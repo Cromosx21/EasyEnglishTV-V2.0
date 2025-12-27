@@ -12,17 +12,12 @@ import {
 export default function Footer() {
 	return (
 		<footer className="bg-brand-dark text-gray-300">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
 				<div className="grid grid-cols-1 md:grid-cols-4 gap-12">
 					{/* Brand Column */}
 					<div className="space-y-6">
-						<div className="flex items-center gap-2">
-							<div className="bg-white text-brand-dark p-2 rounded-lg font-bold text-xl">
-								EE
-							</div>
-							<span className="text-2xl font-bold text-white tracking-tight">
-								EETV
-							</span>
+						<div className="flex items-center gap-2 bg-slate-50 py-2 px-4 rounded-lg">
+							<img src="/src/assets/logo.svg" alt="Logo de la página web" />
 						</div>
 						<p className="text-sm text-gray-400 leading-relaxed">
 							Aprende inglés de manera fácil y efectiva con
@@ -138,17 +133,17 @@ export default function Footer() {
 							</li>
 							<li className="flex items-center">
 								<Phone className="h-4 w-4 mr-3 text-brand-pink" />{" "}
-								+1 (555) 123-4567
+								+51 987 654 321
 							</li>
 							<li className="flex items-center">
 								<MapPin className="h-4 w-4 mr-3 text-brand-pink" />{" "}
-								Ciudad de México, MX
+								Lima, Perú
 							</li>
 						</ul>
 					</div>
 				</div>
 
-				<div className="border-t border-white/10 mt-16 pt-8 text-center text-xs text-gray-500">
+				<div className="border-t border-white/10 mt-6 py-4 text-center text-xs text-gray-500">
 					<p>
 						&copy; {new Date().getFullYear()} Easy English TV. Todos
 						los derechos reservados.
