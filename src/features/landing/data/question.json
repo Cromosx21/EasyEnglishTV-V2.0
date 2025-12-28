@@ -1,0 +1,995 @@
+[
+	{
+		"id": 1,
+		"level": "Facil",
+		"question": "Choose the correct form: I ___ a student.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "am",
+			"opcion_2": "is",
+			"opcion_3": "are",
+			"opcion_4": "be"
+		},
+		"correct_answer": "am"
+	},
+	{
+		"id": 2,
+		"level": "Facil",
+		"question": "She ___ my sister.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "am",
+			"opcion_2": "is",
+			"opcion_3": "are",
+			"opcion_4": "be"
+		},
+		"correct_answer": "is"
+	},
+	{
+		"id": 3,
+		"level": "Facil",
+		"question": "They ___ at home.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "am",
+			"opcion_2": "is",
+			"opcion_3": "are",
+			"opcion_4": "be"
+		},
+		"correct_answer": "are"
+	},
+	{
+		"id": 4,
+		"level": "Facil",
+		"question": "Complete: How ___ you today?",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "are"
+	},
+	{
+		"id": 5,
+		"level": "Facil",
+		"question": "I ___ in Ayacucho.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "live",
+			"opcion_2": "lives",
+			"opcion_3": "living",
+			"opcion_4": "lived"
+		},
+		"correct_answer": "live"
+	},
+	{
+		"id": 6,
+		"level": "Facil",
+		"question": "He ___ coffee every morning.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "drink",
+			"opcion_2": "drinks",
+			"opcion_3": "drinking",
+			"opcion_4": "drank"
+		},
+		"correct_answer": "drinks"
+	},
+	{
+		"id": 7,
+		"level": "Facil",
+		"question": "Complete: Good ___.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "morning"
+	},
+	{
+		"id": 8,
+		"level": "Facil",
+		"question": "We ___ two dogs.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "has",
+			"opcion_2": "have",
+			"opcion_3": "having",
+			"opcion_4": "had"
+		},
+		"correct_answer": "have"
+	},
+	{
+		"id": 9,
+		"level": "Facil",
+		"question": "She ___ English very well.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "speak",
+			"opcion_2": "speaks",
+			"opcion_3": "speaking",
+			"opcion_4": "spoke"
+		},
+		"correct_answer": "speaks"
+	},
+	{
+		"id": 10,
+		"level": "Facil",
+		"question": "Complete: My name ___ Carlos.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "is"
+	},
+	{
+		"id": 11,
+		"level": "Facil",
+		"question": "I ___ breakfast at 7 a.m.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "eat",
+			"opcion_2": "eats",
+			"opcion_3": "eating",
+			"opcion_4": "ate"
+		},
+		"correct_answer": "eat"
+	},
+	{
+		"id": 12,
+		"level": "Facil",
+		"question": "He ___ to work by bus.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "go",
+			"opcion_2": "goes",
+			"opcion_3": "going",
+			"opcion_4": "went"
+		},
+		"correct_answer": "goes"
+	},
+	{
+		"id": 13,
+		"level": "Facil",
+		"question": "Complete: Nice ___ meet you.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "to"
+	},
+	{
+		"id": 14,
+		"level": "Facil",
+		"question": "They ___ football on Sundays.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "play",
+			"opcion_2": "plays",
+			"opcion_3": "playing",
+			"opcion_4": "played"
+		},
+		"correct_answer": "play"
+	},
+	{
+		"id": 15,
+		"level": "Facil",
+		"question": "She ___ a teacher.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "am",
+			"opcion_2": "is",
+			"opcion_3": "are",
+			"opcion_4": "be"
+		},
+		"correct_answer": "is"
+	},
+	{
+		"id": 16,
+		"level": "Facil",
+		"question": "Complete: See you ___.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "later"
+	},
+	{
+		"id": 17,
+		"level": "Facil",
+		"question": "We ___ in an office.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "work",
+			"opcion_2": "works",
+			"opcion_3": "working",
+			"opcion_4": "worked"
+		},
+		"correct_answer": "work"
+	},
+	{
+		"id": 18,
+		"level": "Facil",
+		"question": "He ___ TV at night.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "watch",
+			"opcion_2": "watches",
+			"opcion_3": "watching",
+			"opcion_4": "watched"
+		},
+		"correct_answer": "watches"
+	},
+	{
+		"id": 19,
+		"level": "Facil",
+		"question": "Complete: Have a nice ___.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "day"
+	},
+	{
+		"id": 20,
+		"level": "Facil",
+		"question": "I ___ a laptop.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "has",
+			"opcion_2": "have",
+			"opcion_3": "having",
+			"opcion_4": "had"
+		},
+		"correct_answer": "have"
+	},
+	{
+		"id": 21,
+		"level": "Facil",
+		"question": "She ___ up early.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "get",
+			"opcion_2": "gets",
+			"opcion_3": "getting",
+			"opcion_4": "got"
+		},
+		"correct_answer": "gets"
+	},
+	{
+		"id": 22,
+		"level": "Facil",
+		"question": "Complete: Good ___.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "afternoon"
+	},
+	{
+		"id": 23,
+		"level": "Facil",
+		"question": "They ___ students.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "am",
+			"opcion_2": "is",
+			"opcion_3": "are",
+			"opcion_4": "be"
+		},
+		"correct_answer": "are"
+	},
+	{
+		"id": 24,
+		"level": "Facil",
+		"question": "He ___ music.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "like",
+			"opcion_2": "likes",
+			"opcion_3": "liking",
+			"opcion_4": "liked"
+		},
+		"correct_answer": "likes"
+	},
+	{
+		"id": 25,
+		"level": "Facil",
+		"question": "Complete: What's ___ name?",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "your"
+	},
+	{
+		"id": 26,
+		"level": "Facil",
+		"question": "I ___ water every day.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "drink",
+			"opcion_2": "drinks",
+			"opcion_3": "drinking",
+			"opcion_4": "drank"
+		},
+		"correct_answer": "drink"
+	},
+	{
+		"id": 27,
+		"level": "Facil",
+		"question": "She ___ from Peru.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "am",
+			"opcion_2": "is",
+			"opcion_3": "are",
+			"opcion_4": "be"
+		},
+		"correct_answer": "is"
+	},
+	{
+		"id": 28,
+		"level": "Facil",
+		"question": "Complete: Welcome ___ our class.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "to"
+	},
+	{
+		"id": 29,
+		"level": "Facil",
+		"question": "They ___ lunch at noon.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "have",
+			"opcion_2": "has",
+			"opcion_3": "having",
+			"opcion_4": "had"
+		},
+		"correct_answer": "have"
+	},
+	{
+		"id": 30,
+		"level": "Intermedio",
+		"question": "I ___ to Lima last year.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "go",
+			"opcion_2": "went",
+			"opcion_3": "gone",
+			"opcion_4": "going"
+		},
+		"correct_answer": "went"
+	},
+	{
+		"id": 31,
+		"level": "Intermedio",
+		"question": "She ___ already finished her work.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "has",
+			"opcion_2": "have",
+			"opcion_3": "had",
+			"opcion_4": "having"
+		},
+		"correct_answer": "has"
+	},
+	{
+		"id": 32,
+		"level": "Intermedio",
+		"question": "Complete: We have lived here ___ 2019.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "since"
+	},
+	{
+		"id": 33,
+		"level": "Intermedio",
+		"question": "I was tired, ___ I kept studying.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "but",
+			"opcion_2": "because",
+			"opcion_3": "so",
+			"opcion_4": "although"
+		},
+		"correct_answer": "but"
+	},
+	{
+		"id": 34,
+		"level": "Intermedio",
+		"question": "This exam is ___ than the previous one.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "easy",
+			"opcion_2": "easier",
+			"opcion_3": "easiest",
+			"opcion_4": "more easy"
+		},
+		"correct_answer": "easier"
+	},
+	{
+		"id": 35,
+		"level": "Intermedio",
+		"question": "You ___ wear a helmet.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "should",
+			"opcion_2": "could",
+			"opcion_3": "might",
+			"opcion_4": "would"
+		},
+		"correct_answer": "should"
+	},
+	{
+		"id": 36,
+		"level": "Intermedio",
+		"question": "They ___ the movie yesterday.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "see",
+			"opcion_2": "saw",
+			"opcion_3": "seen",
+			"opcion_4": "seeing"
+		},
+		"correct_answer": "saw"
+	},
+	{
+		"id": 37,
+		"level": "Intermedio",
+		"question": "Complete: I have known her ___ five years.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "for"
+	},
+	{
+		"id": 38,
+		"level": "Intermedio",
+		"question": "This phone is ___ expensive than mine.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "more",
+			"opcion_2": "most",
+			"opcion_3": "much",
+			"opcion_4": "very"
+		},
+		"correct_answer": "more"
+	},
+	{
+		"id": 39,
+		"level": "Intermedio",
+		"question": "You ___ park here.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "must",
+			"opcion_2": "mustn't",
+			"opcion_3": "should",
+			"opcion_4": "can"
+		},
+		"correct_answer": "mustn't"
+	},
+	{
+		"id": 40,
+		"level": "Intermedio",
+		"question": "He ___ working here since 2020.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "is",
+			"opcion_2": "has been",
+			"opcion_3": "was",
+			"opcion_4": "will be"
+		},
+		"correct_answer": "has been"
+	},
+	{
+		"id": 41,
+		"level": "Intermedio",
+		"question": "Complete: She didn't ___ the answer.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "know"
+	},
+	{
+		"id": 42,
+		"level": "Intermedio",
+		"question": "I ___ call you later.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "must",
+			"opcion_2": "might",
+			"opcion_3": "had",
+			"opcion_4": "was"
+		},
+		"correct_answer": "might"
+	},
+	{
+		"id": 43,
+		"level": "Intermedio",
+		"question": "This exercise is ___ difficult than the last.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "less",
+			"opcion_2": "least",
+			"opcion_3": "little",
+			"opcion_4": "few"
+		},
+		"correct_answer": "less"
+	},
+	{
+		"id": 44,
+		"level": "Intermedio",
+		"question": "They ___ finished the report.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "have",
+			"opcion_2": "has",
+			"opcion_3": "had",
+			"opcion_4": "having"
+		},
+		"correct_answer": "have"
+	},
+	{
+		"id": 45,
+		"level": "Intermedio",
+		"question": "Complete: Although it was raining, we ___ out.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "went"
+	},
+	{
+		"id": 46,
+		"level": "Intermedio",
+		"question": "She ___ speak English when she was five.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "can",
+			"opcion_2": "could",
+			"opcion_3": "may",
+			"opcion_4": "must"
+		},
+		"correct_answer": "could"
+	},
+	{
+		"id": 47,
+		"level": "Intermedio",
+		"question": "I studied hard ___ I passed the test.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "because",
+			"opcion_2": "but",
+			"opcion_3": "so",
+			"opcion_4": "although"
+		},
+		"correct_answer": "so"
+	},
+	{
+		"id": 48,
+		"level": "Intermedio",
+		"question": "This bag is ___ heavier than that one.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "very",
+			"opcion_2": "much",
+			"opcion_3": "too",
+			"opcion_4": "so"
+		},
+		"correct_answer": "much"
+	},
+	{
+		"id": 49,
+		"level": "Intermedio",
+		"question": "Complete: Have you ever ___ abroad?",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "traveled"
+	},
+	{
+		"id": 50,
+		"level": "Intermedio",
+		"question": "They ___ waiting for an hour.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "are",
+			"opcion_2": "have been",
+			"opcion_3": "were",
+			"opcion_4": "will be"
+		},
+		"correct_answer": "have been"
+	},
+	{
+		"id": 51,
+		"level": "Intermedio",
+		"question": "You ___ tell anyone about this.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "should",
+			"opcion_2": "shouldn't",
+			"opcion_3": "can",
+			"opcion_4": "might"
+		},
+		"correct_answer": "shouldn't"
+	},
+	{
+		"id": 52,
+		"level": "Intermedio",
+		"question": "She ___ the email last night.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "send",
+			"opcion_2": "sent",
+			"opcion_3": "sending",
+			"opcion_4": "sends"
+		},
+		"correct_answer": "sent"
+	},
+	{
+		"id": 53,
+		"level": "Intermedio",
+		"question": "Complete: I was late ___ the traffic.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "because of"
+	},
+	{
+		"id": 54,
+		"level": "Intermedio",
+		"question": "This solution is ___ effective than the old one.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "more",
+			"opcion_2": "most",
+			"opcion_3": "very",
+			"opcion_4": "much"
+		},
+		"correct_answer": "more"
+	},
+	{
+		"id": 55,
+		"level": "Intermedio",
+		"question": "He ___ finish the task today.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "must",
+			"opcion_2": "might",
+			"opcion_3": "could",
+			"opcion_4": "would"
+		},
+		"correct_answer": "must"
+	},
+	{
+		"id": 56,
+		"level": "Intermedio",
+		"question": "They ___ never tried sushi before.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "have",
+			"opcion_2": "has",
+			"opcion_3": "had",
+			"opcion_4": "having"
+		},
+		"correct_answer": "have"
+	},
+	{
+		"id": 57,
+		"level": "Intermedio",
+		"question": "Complete: We stayed home ___ it was cold.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "because"
+	},
+	{
+		"id": 58,
+		"level": "Intermedio",
+		"question": "This city is ___ crowded than before.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "more",
+			"opcion_2": "most",
+			"opcion_3": "much",
+			"opcion_4": "very"
+		},
+		"correct_answer": "more"
+	},
+	{
+		"id": 59,
+		"level": "Dificil",
+		"question": "If I had known the truth, I ___ differently.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "will act",
+			"opcion_2": "would act",
+			"opcion_3": "would have acted",
+			"opcion_4": "had acted"
+		},
+		"correct_answer": "would have acted"
+	},
+	{
+		"id": 60,
+		"level": "Dificil",
+		"question": "The results ___ by the committee tomorrow.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "announce",
+			"opcion_2": "will announce",
+			"opcion_3": "will be announced",
+			"opcion_4": "are announcing"
+		},
+		"correct_answer": "will be announced"
+	},
+	{
+		"id": 61,
+		"level": "Dificil",
+		"question": "Complete: She carried ___ the investigation carefully.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "out"
+	},
+	{
+		"id": 62,
+		"level": "Dificil",
+		"question": "If he were more careful, he ___ make fewer mistakes.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "will",
+			"opcion_2": "would",
+			"opcion_3": "had",
+			"opcion_4": "has"
+		},
+		"correct_answer": "would"
+	},
+	{
+		"id": 63,
+		"level": "Dificil",
+		"question": "The article ___ in a scientific journal.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "published",
+			"opcion_2": "was published",
+			"opcion_3": "has publish",
+			"opcion_4": "publishing"
+		},
+		"correct_answer": "was published"
+	},
+	{
+		"id": 64,
+		"level": "Dificil",
+		"question": "Complete: They came ___ with an innovative solution.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "up"
+	},
+	{
+		"id": 65,
+		"level": "Dificil",
+		"question": "Had she known earlier, she ___ attended the meeting.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "will have",
+			"opcion_2": "would have",
+			"opcion_3": "had",
+			"opcion_4": "has"
+		},
+		"correct_answer": "would have"
+	},
+	{
+		"id": 66,
+		"level": "Dificil",
+		"question": "The experiment ___ under controlled conditions.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "conducted",
+			"opcion_2": "was conducted",
+			"opcion_3": "is conducting",
+			"opcion_4": "conducts"
+		},
+		"correct_answer": "was conducted"
+	},
+	{
+		"id": 67,
+		"level": "Dificil",
+		"question": "Complete: This theory is widely ___ in academia.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "accepted"
+	},
+	{
+		"id": 68,
+		"level": "Dificil",
+		"question": "If we had left earlier, we ___ arrived on time.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "will",
+			"opcion_2": "would",
+			"opcion_3": "would have",
+			"opcion_4": "had"
+		},
+		"correct_answer": "would have"
+	},
+	{
+		"id": 69,
+		"level": "Dificil",
+		"question": "The policy ___ to reduce environmental impact.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "designed",
+			"opcion_2": "was designed",
+			"opcion_3": "designs",
+			"opcion_4": "is designing"
+		},
+		"correct_answer": "was designed"
+	},
+	{
+		"id": 70,
+		"level": "Dificil",
+		"question": "Complete: He ran ___ of time before finishing.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "out"
+	},
+	{
+		"id": 71,
+		"level": "Dificil",
+		"question": "If she weren't so busy, she ___ help us.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "will",
+			"opcion_2": "would",
+			"opcion_3": "had",
+			"opcion_4": "has"
+		},
+		"correct_answer": "would"
+	},
+	{
+		"id": 72,
+		"level": "Dificil",
+		"question": "The data ___ carefully analyzed.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "were",
+			"opcion_2": "was",
+			"opcion_3": "are",
+			"opcion_4": "is"
+		},
+		"correct_answer": "were"
+	},
+	{
+		"id": 73,
+		"level": "Dificil",
+		"question": "Complete: The meeting was called ___ due to an emergency.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "off"
+	},
+	{
+		"id": 74,
+		"level": "Dificil",
+		"question": "If I had listened to you, I ___ this problem.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "won't have",
+			"opcion_2": "wouldn't have",
+			"opcion_3": "didn't have",
+			"opcion_4": "hadn't"
+		},
+		"correct_answer": "wouldn't have"
+	},
+	{
+		"id": 75,
+		"level": "Dificil",
+		"question": "The building ___ last year.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "renovated",
+			"opcion_2": "was renovated",
+			"opcion_3": "has renovate",
+			"opcion_4": "renovates"
+		},
+		"correct_answer": "was renovated"
+	},
+	{
+		"id": 76,
+		"level": "Dificil",
+		"question": "Complete: She looked ___ the information online.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "up"
+	},
+	{
+		"id": 77,
+		"level": "Dificil",
+		"question": "If they had prepared better, they ___ succeeded.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "will have",
+			"opcion_2": "would have",
+			"opcion_3": "had",
+			"opcion_4": "have"
+		},
+		"correct_answer": "would have"
+	},
+	{
+		"id": 78,
+		"level": "Dificil",
+		"question": "The law ___ to protect consumers.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "created",
+			"opcion_2": "was created",
+			"opcion_3": "creates",
+			"opcion_4": "is creating"
+		},
+		"correct_answer": "was created"
+	},
+	{
+		"id": 79,
+		"level": "Dificil",
+		"question": "Complete: He broke ___ the system security.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "into"
+	},
+	{
+		"id": 80,
+		"level": "Dificil",
+		"question": "If I were in your position, I ___ the offer.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "accept",
+			"opcion_2": "would accept",
+			"opcion_3": "accepted",
+			"opcion_4": "will accept"
+		},
+		"correct_answer": "would accept"
+	},
+	{
+		"id": 81,
+		"level": "Dificil",
+		"question": "The hypothesis ___ after the experiment.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "tested",
+			"opcion_2": "was tested",
+			"opcion_3": "tests",
+			"opcion_4": "testing"
+		},
+		"correct_answer": "was tested"
+	},
+	{
+		"id": 82,
+		"level": "Dificil",
+		"question": "Complete: The team carried ___ the plan successfully.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "out"
+	},
+	{
+		"id": 83,
+		"level": "Dificil",
+		"question": "If he had more experience, he ___ chosen.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "will be",
+			"opcion_2": "would be",
+			"opcion_3": "had been",
+			"opcion_4": "has been"
+		},
+		"correct_answer": "would be"
+	},
+	{
+		"id": 84,
+		"level": "Dificil",
+		"question": "The proposal ___ by the board.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "approved",
+			"opcion_2": "was approved",
+			"opcion_3": "approves",
+			"opcion_4": "is approving"
+		},
+		"correct_answer": "was approved"
+	},
+	{
+		"id": 85,
+		"level": "Dificil",
+		"question": "Complete: She stood ___ for her rights.",
+		"type": "rellenar",
+		"alternatives": null,
+		"correct_answer": "up"
+	},
+	{
+		"id": 86,
+		"level": "Dificil",
+		"question": "If we hadn't missed the bus, we ___ late.",
+		"type": "seleccionar",
+		"alternatives": {
+			"opcion_1": "won't be",
+			"opcion_2": "wouldn't have been",
+			"opcion_3": "weren't",
+			"opcion_4": "aren't"
+		},
+		"correct_answer": "wouldn't have been"
+	}
+]
