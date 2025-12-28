@@ -8,6 +8,9 @@ import {
 	BookOpen,
 } from "lucide-react";
 import { Card } from "@/components/ui/layout/Card";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
+import { useCart } from "@/context/CartContext";
 
 const materials = [
 	{
@@ -28,7 +31,8 @@ const materials = [
 			"Flashcards digitales",
 			"Soporte 24/7",
 		],
-		price: "$12.00",
+		price: 12.0,
+		priceDisplay: "$12.00",
 		gradient: "from-indigo-500 to-indigo-600",
 		emoji: "🇺🇸",
 	},
@@ -50,7 +54,8 @@ const materials = [
 			"Comunidad exclusiva",
 			"Certificado digital",
 		],
-		price: "$15.00",
+		price: 15.0,
+		priceDisplay: "$15.00",
 		gradient: "from-rose-500 to-rose-600",
 		emoji: "🇬🇧",
 	},
@@ -72,7 +77,8 @@ const materials = [
 			"Casos de estudio",
 			"Mentoría grupal",
 		],
-		price: "$18.00",
+		price: 18.0,
+		priceDisplay: "$18.00",
 		gradient: "from-amber-500 to-amber-600",
 		emoji: "💼",
 	},
@@ -85,10 +91,25 @@ export default function MaterialShowcase() {
 	const [containerWidth, setContainerWidth] = useState(0);
 
 	const containerRef = useRef(null);
+	const navigate = useNavigate();
+	const { user } = useAuth();
+	const { addToCart } = useCart();
 
 	// Touch handling state
 	const touchStartX = useRef(null);
 	const touchCurrentX = useRef(null);
+
+	const handleAddToCart = (e, material) => {
+		e.preventDefault();
+		e.stopPropagation();
+
+		// Siempre agregar al carrito sin abrir el drawer automáticamente (false)
+		// La animación del botón flotante dará feedback visual
+		addToCart(
+			{ ...material, type: "material", price: material.price },
+			false
+		);
+	};
 
 	useEffect(() => {
 		if (containerRef.current) {
@@ -246,8 +267,12 @@ export default function MaterialShowcase() {
 										{/* Book Mockup */}
 										<div
 											className={` rounded-r-2xl rounded-l-sm  shadow-2xl relative overflow-hidden transform group-hover:scale-105 transition-all duration-500`}
-                    >
-                      <img src={currentMaterial.image} className="w-full h-full object-cover" alt="Libro" />
+										>
+											<img
+												src={currentMaterial.image}
+												className="w-full h-full object-cover"
+												alt="Libro"
+											/>
 
 											<div className="absolute bottom-0 left-0 right-0 h-2 bg-black/20"></div>
 											<div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-black/20 to-transparent"></div>
@@ -331,9 +356,18 @@ export default function MaterialShowcase() {
 									</div>
 
 									<div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
-										<Button className="w-full sm:w-auto bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 transition-all rounded-full px-8 h-14 gap-3 shadow-xl shadow-brand-pink/20 text-lg">
+										<Button
+											onClick={(e) =>
+												handleAddToCart(
+													e,
+													currentMaterial
+												)
+											}
+											className="w-full sm:w-auto bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 transition-all rounded-full px-8 h-14 gap-3 shadow-xl shadow-brand-pink/20 text-lg"
+										>
 											<ShoppingCart className="w-5 h-5" />
-											Adquirir por {currentMaterial.price}
+											Adquirir por{" "}
+											{currentMaterial.priceDisplay}
 										</Button>
 										<Button
 											variant="ghost"

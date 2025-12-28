@@ -1,9 +1,58 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/common/Button";
 import { Input } from "@/components/ui/common/Input";
 import { User, Lock, ArrowRight } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
+import { useState, useEffect } from "react";
 
 export default function LoginPage() {
+	const navigate = useNavigate();
+	const location = useLocation();
+	const { login } = useAuth();
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
+	// Get the return path from location state or default to home
+	const from = location.state?.from?.pathname || "/";
+	const isCheckout = location.state?.from?.pathname === "/checkout";
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		// Mock login logic
+		const result = login({
+			email: email,
+			password: password,
+		});
+
+		if (result.success) {
+			// Get user from localStorage to check role immediately
+			const user = JSON.parse(localStorage.getItem("eetv_user"));
+			if (user?.role === "admin") {
+				navigate("/admin/dashboard");
+			} else {
+				// If coming from "Pay Now" (checkout intent), go to checkout
+				if (isCheckout) {
+					navigate("/checkout");
+				} else {
+					// Otherwise, go back to where they came from (materials, jessica, etc)
+					// If no history, go home
+					navigate(from, { replace: true });
+				}
+			}
+		} else {
+			alert(result.message || "Error al iniciar sesión");
+		}
+	};
+
+	const handleDemoLogin = (role) => {
+		login({
+			name: role === "admin" ? "Admin User" : "Student User",
+			email: role === "admin" ? "admin@eetv.com" : "student@eetv.com",
+			role: role,
+		});
+		navigate(role === "admin" ? "/admin/dashboard" : "/");
+	};
+
 	return (
 		<>
 			<div className="min-h-fit bg-gray-50 flex flex-col">
@@ -25,12 +74,7 @@ export default function LoginPage() {
 								</p>
 							</div>
 
-							<form
-								className="space-y-6"
-								action="#"
-								method="POST"
-								onSubmit={(e) => e.preventDefault()}
-							>
+							<form className="space-y-6" onSubmit={handleSubmit}>
 								<div>
 									<label
 										htmlFor="email"
@@ -50,6 +94,10 @@ export default function LoginPage() {
 											required
 											className="focus:ring-brand-blue focus:border-brand-blue block w-full pl-10 sm:text-sm border-gray-300 rounded-lg py-3"
 											placeholder="tucorreo@ejemplo.com"
+											value={email}
+											onChange={(e) =>
+												setEmail(e.target.value)
+											}
 										/>
 									</div>
 								</div>
@@ -83,6 +131,10 @@ export default function LoginPage() {
 											required
 											className="focus:ring-brand-blue focus:border-brand-blue block w-full pl-10 sm:text-sm border-gray-300 rounded-lg py-3"
 											placeholder="••••••••"
+											value={password}
+											onChange={(e) =>
+												setPassword(e.target.value)
+											}
 										/>
 									</div>
 								</div>
@@ -111,9 +163,12 @@ export default function LoginPage() {
 
 									<div className="mt-6 grid grid-cols-2 gap-3">
 										<div>
-											<a
-												href="#"
+											<button
+												type="button"
 												className="w-full inline-flex justify-center py-2.5 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+												onClick={() =>
+													handleDemoLogin("student")
+												}
 											>
 												<span className="sr-only">
 													Iniciar sesión con Facebook
@@ -130,13 +185,16 @@ export default function LoginPage() {
 														clipRule="evenodd"
 													/>
 												</svg>
-											</a>
+											</button>
 										</div>
 
 										<div>
-											<a
-												href="#"
+											<button
+												type="button"
 												className="w-full inline-flex justify-center py-2.5 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+												onClick={() =>
+													handleDemoLogin("student")
+												}
 											>
 												<span className="sr-only">
 													Iniciar sesión con Google
@@ -164,24 +222,28 @@ export default function LoginPage() {
 														fill="#EA4335"
 													/>
 												</svg>
-											</a>
+											</button>
 										</div>
 									</div>
 								</div>
 
 								<div className="flex justify-between mt-6">
-									<Link
-										to="/student/dashboard"
-										className="text-sm text-blue-600 hover:underline"
+									<button
+										type="button"
+										onClick={() =>
+											handleDemoLogin("student")
+										}
+										className="text-sm text-blue-600 hover:underline bg-transparent border-none cursor-pointer"
 									>
 										Ir a Estudiante (Demo)
-									</Link>
-									<Link
-										to="/admin/dashboard"
-										className="text-sm text-blue-600 hover:underline"
+									</button>
+									<button
+										type="button"
+										onClick={() => handleDemoLogin("admin")}
+										className="text-sm text-blue-600 hover:underline bg-transparent border-none cursor-pointer"
 									>
 										Ir a Admin (Demo)
-									</Link>
+									</button>
 								</div>
 							</form>
 						</div>

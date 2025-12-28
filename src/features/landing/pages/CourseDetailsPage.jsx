@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/common/Button";
 import {
 	CheckCircle2,
@@ -7,6 +7,8 @@ import {
 	Award,
 	ArrowLeft,
 } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
+import { useCart } from "@/context/CartContext";
 
 /**
  * Datos simulados de los cursos (Mock Data).
@@ -17,6 +19,7 @@ const coursesData = [
 		id: 1,
 		title: "Curso teórico viajes I",
 		level: "Inglés Básico",
+		price: 29.99,
 		description:
 			"Domina el uso práctico de verbos regulares e irregulares en frases reales.",
 		longDescription:
@@ -36,6 +39,7 @@ const coursesData = [
 		id: 2,
 		title: "Inglés para Negocios",
 		level: "Inglés Intermedio",
+		price: 49.99,
 		description:
 			"Aprende a desenvolverte en reuniones, correos y presentaciones profesionales.",
 		longDescription:
@@ -55,6 +59,7 @@ const coursesData = [
 		id: 3,
 		title: "Gramática Avanzada",
 		level: "Inglés Avanzado",
+		price: 39.99,
 		description:
 			"Perfecciona tu escritura y habla con estructuras complejas.",
 		longDescription:
@@ -74,6 +79,7 @@ const coursesData = [
 		id: 4,
 		title: "Pronunciación Master",
 		level: "Todos los niveles",
+		price: 19.99,
 		description:
 			"Elimina tu acento y habla como un nativo con técnicas fonéticas.",
 		longDescription:
@@ -100,6 +106,9 @@ const coursesData = [
 export default function CourseDetailsPage() {
 	// Obtener el ID del curso de la URL (ej: /courses/1 -> id = 1)
 	const { id } = useParams();
+	const navigate = useNavigate();
+	const { user } = useAuth();
+	const { addToCart } = useCart();
 
 	// Buscar el curso correspondiente en los datos simulados
 	const course = coursesData.find((c) => c.id === parseInt(id));
@@ -112,6 +121,12 @@ export default function CourseDetailsPage() {
 			</div>
 		);
 	}
+
+	const handleEnroll = () => {
+		// Siempre agregar al carrito sin abrir el drawer automáticamente
+		// La animación del botón flotante indicará que se agregó
+		addToCart({ ...course, type: "curso" }, false);
+	};
 
 	return (
 		<div className="bg-white min-h-screen pb-20">
@@ -165,9 +180,14 @@ export default function CourseDetailsPage() {
 							</div>
 
 							{/* Botón de Acción Principal (Call to Action) */}
-							<Button className="bg-rose-500 hover:bg-rose-600 text-white rounded-full px-8 py-6 text-lg shadow-lg shadow-rose-500/20">
-								Inscribirme Ahora
-							</Button>
+							<div className="flex items-center gap-4">
+								<Button
+									onClick={handleEnroll}
+									className="bg-rose-500 hover:bg-rose-600 text-white rounded-full px-8 py-6 text-lg shadow-lg shadow-rose-500/20"
+								>
+									Inscribirme Ahora - ${course.price}
+								</Button>
+							</div>
 						</div>
 
 						{/* Columna Derecha: Imagen/Video Preview */}

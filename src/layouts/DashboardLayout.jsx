@@ -14,17 +14,33 @@ import {
 } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { Button } from "@/components/ui/common/Button";
+import Navbar from "@/components/ui/layout/Navbar";
+import { useAuth } from "@/context/AuthContext";
 
 export default function DashboardLayout({ role }) {
 	const navigate = useNavigate();
 	const location = useLocation();
+	const { logout } = useAuth();
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 	const handleLogout = () => {
-		// TODO: Implement logout logic
+		logout();
 		navigate("/auth/login");
 	};
 
+	// STUDENT LAYOUT (No Sidebar, uses Navbar)
+	if (role === "student") {
+		return (
+			<div className="min-h-screen bg-gray-50 flex flex-col">
+				<Navbar />
+				<main className="flex-1 pt-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+					<Outlet />
+				</main>
+			</div>
+		);
+	}
+
+	// ADMIN LAYOUT (With Sidebar)
 	const navItemClass = (path) =>
 		cn(
 			"flex items-center p-2 rounded-md transition-colors",
@@ -57,69 +73,46 @@ export default function DashboardLayout({ role }) {
 					Dashboard
 				</Link>
 
-				{role === "admin" ? (
-					<>
-						<Link
-							to="/admin/users"
-							className={navItemClass("/admin/users")}
-							onClick={() => setIsMobileMenuOpen(false)}
-						>
-							<User className="w-5 h-5 mr-3" />
-							Usuarios
-						</Link>
-						<Link
-							to="/admin/courses"
-							className={navItemClass("/admin/courses")}
-							onClick={() => setIsMobileMenuOpen(false)}
-						>
-							<BookOpen className="w-5 h-5 mr-3" />
-							Cursos
-						</Link>
-						<Link
-							to="/admin/materials"
-							className={navItemClass("/admin/materials")}
-							onClick={() => setIsMobileMenuOpen(false)}
-						>
-							<Library className="w-5 h-5 mr-3" />
-							Materiales
-						</Link>
-						<Link
-							to="/admin/finance"
-							className={navItemClass("/admin/finance")}
-							onClick={() => setIsMobileMenuOpen(false)}
-						>
-							<DollarSign className="w-5 h-5 mr-3" />
-							Finanzas
-						</Link>
-						<Link
-							to="/admin/activity"
-							className={navItemClass("/admin/activity")}
-							onClick={() => setIsMobileMenuOpen(false)}
-						>
-							<Activity className="w-5 h-5 mr-3" />
-							Actividad
-						</Link>
-					</>
-				) : (
-					<>
-						<Link
-							to="/student/courses"
-							className={navItemClass("/student/courses")}
-							onClick={() => setIsMobileMenuOpen(false)}
-						>
-							<BookOpen className="w-5 h-5 mr-3" />
-							Mis Cursos
-						</Link>
-						<Link
-							to="/student/materials"
-							className={navItemClass("/student/materials")}
-							onClick={() => setIsMobileMenuOpen(false)}
-						>
-							<Library className="w-5 h-5 mr-3" />
-							Mis Materiales
-						</Link>
-					</>
-				)}
+				<Link
+					to="/admin/users"
+					className={navItemClass("/admin/users")}
+					onClick={() => setIsMobileMenuOpen(false)}
+				>
+					<User className="w-5 h-5 mr-3" />
+					Usuarios
+				</Link>
+				<Link
+					to="/admin/courses"
+					className={navItemClass("/admin/courses")}
+					onClick={() => setIsMobileMenuOpen(false)}
+				>
+					<BookOpen className="w-5 h-5 mr-3" />
+					Cursos
+				</Link>
+				<Link
+					to="/admin/materials"
+					className={navItemClass("/admin/materials")}
+					onClick={() => setIsMobileMenuOpen(false)}
+				>
+					<Library className="w-5 h-5 mr-3" />
+					Materiales
+				</Link>
+				<Link
+					to="/admin/finance"
+					className={navItemClass("/admin/finance")}
+					onClick={() => setIsMobileMenuOpen(false)}
+				>
+					<DollarSign className="w-5 h-5 mr-3" />
+					Finanzas
+				</Link>
+				<Link
+					to="/admin/activity"
+					className={navItemClass("/admin/activity")}
+					onClick={() => setIsMobileMenuOpen(false)}
+				>
+					<Activity className="w-5 h-5 mr-3" />
+					Actividad
+				</Link>
 
 				<Link
 					to={`/${role}/settings`}

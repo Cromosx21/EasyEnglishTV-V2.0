@@ -3,9 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/common/Button";
 import { User, Menu, X } from "lucide-react";
 import { cn } from "@/utils/cn";
+import { useAuth } from "@/context/AuthContext";
+import UserMenuDropdown from "./UserMenuDropdown";
 
 export default function Navbar() {
 	const location = useLocation();
+	const { user } = useAuth();
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 	const isActive = (path) => {
@@ -33,7 +36,10 @@ export default function Navbar() {
 								className="flex items-center gap-2"
 								onClick={() => setIsMobileMenuOpen(false)}
 							>
-								<img src="/src/assets/logo.svg" alt="Logo de la página web" />
+								<img
+									src="/src/assets/logo.svg"
+									alt="Logo de la página web"
+								/>
 							</Link>
 						</div>
 
@@ -52,18 +58,25 @@ export default function Navbar() {
 							))}
 						</div>
 
-						{/* Desktop CTA Buttons */}
+						{/* Desktop CTA Buttons / User Menu */}
 						<div className="hidden md:flex items-center gap-4">
-							<Link to="/auth/login">
-								<Button className="bg-rose-500 hover:bg-rose-600 text-white rounded-full px-8 py-2 font-semibold shadow-lg shadow-rose-500/20">
-									<User className="w-4 h-4 mr-2" />
-									Iniciar Sesión
-								</Button>
-							</Link>
+							{user ? (
+								<UserMenuDropdown />
+							) : (
+								<Link to="/auth/login">
+									<Button className="bg-rose-500 hover:bg-rose-600 text-white rounded-full px-8 py-2 font-semibold shadow-lg shadow-rose-500/20">
+										<User className="w-4 h-4 mr-2" />
+										Iniciar Sesión
+									</Button>
+								</Link>
+							)}
 						</div>
 
 						{/* Mobile menu button */}
-						<div className="md:hidden flex items-center">
+						<div className="md:hidden flex items-center gap-4">
+							{/* Show User Menu on mobile right next to burger if logged in */}
+							{user && <UserMenuDropdown />}
+
 							<Button
 								variant="ghost"
 								size="icon"
@@ -115,17 +128,20 @@ export default function Navbar() {
 								{link.name}
 							</Link>
 						))}
-						<div className="pt-4 w-full flex justify-center">
-							<Link
-								to="/auth/login"
-								onClick={() => setIsMobileMenuOpen(false)}
-							>
-								<Button className="bg-rose-500 hover:bg-rose-600 text-white rounded-full px-8 py-2 font-semibold shadow-lg shadow-rose-500/20 w-full sm:w-auto">
-									<User className="w-4 h-4 mr-2" />
-									Iniciar Sesión
-								</Button>
-							</Link>
-						</div>
+
+						{!user && (
+							<div className="pt-4 w-full flex justify-center">
+								<Link
+									to="/auth/login"
+									onClick={() => setIsMobileMenuOpen(false)}
+								>
+									<Button className="bg-rose-500 hover:bg-rose-600 text-white rounded-full px-8 py-2 font-semibold shadow-lg shadow-rose-500/20 w-full sm:w-auto">
+										<User className="w-4 h-4 mr-2" />
+										Iniciar Sesión
+									</Button>
+								</Link>
+							</div>
+						)}
 					</div>
 				</div>
 			</nav>

@@ -1,8 +1,36 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/common/Button";
 import { User, Mail, Lock, ArrowRight } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
+import { useState } from "react";
 
 export default function RegisterPage() {
+	const navigate = useNavigate();
+	const { login } = useAuth();
+	const [formData, setFormData] = useState({
+		name: "",
+		email: "",
+		password: "",
+	});
+
+	const handleChange = (e) => {
+		setFormData({
+			...formData,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		// Mock register logic
+		login({
+			name: formData.name,
+			email: formData.email,
+			role: "student",
+		});
+		navigate("/");
+	};
+
 	return (
 		<div className="min-h-fit bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
 			<div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -22,8 +50,8 @@ export default function RegisterPage() {
 
 			<div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
 				<div className="bg-white py-8 px-4 shadow-xl rounded-2xl sm:px-10 border border-gray-100">
-					<form className="space-y-6">
-                        <div>
+					<form className="space-y-6" onSubmit={handleSubmit}>
+						<div>
 							<label
 								htmlFor="name"
 								className="block text-sm font-medium text-gray-700"
@@ -41,6 +69,8 @@ export default function RegisterPage() {
 									required
 									className="focus:ring-brand-blue focus:border-brand-blue block w-full pl-10 sm:text-sm border-gray-300 rounded-lg py-3"
 									placeholder="Tu nombre"
+									value={formData.name}
+									onChange={handleChange}
 								/>
 							</div>
 						</div>
@@ -64,6 +94,8 @@ export default function RegisterPage() {
 									required
 									className="focus:ring-brand-blue focus:border-brand-blue block w-full pl-10 sm:text-sm border-gray-300 rounded-lg py-3"
 									placeholder="tucorreo@ejemplo.com"
+									value={formData.email}
+									onChange={handleChange}
 								/>
 							</div>
 						</div>
@@ -87,6 +119,8 @@ export default function RegisterPage() {
 									required
 									className="focus:ring-brand-blue focus:border-brand-blue block w-full pl-10 sm:text-sm border-gray-300 rounded-lg py-3"
 									placeholder="••••••••"
+									value={formData.password}
+									onChange={handleChange}
 								/>
 							</div>
 						</div>
@@ -112,7 +146,7 @@ export default function RegisterPage() {
 								className="w-full flex justify-center py-3 px-4 border border-transparent rounded-full shadow-lg text-sm font-medium text-white bg-rose-500 hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
 							>
 								Crear cuenta
-                                <ArrowRight className="ml-2 h-4 w-4" />
+								<ArrowRight className="ml-2 h-4 w-4" />
 							</Button>
 						</div>
 					</form>
