@@ -107,3 +107,8 @@
 		font-family: var(--font-display);
 	}
 }
+
+html{
+	scroll-behavior: smooth;
+	scroll-padding-top: 120px;
+}
