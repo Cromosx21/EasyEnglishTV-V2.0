@@ -331,7 +331,7 @@ export default function QuizLevelPage() {
 								>
 									<Button
 										size="sm"
-										className="w-full bg-rose-500 hover:bg-rose-600 text-white"
+										className="w-full bg-rose-500 hover:bg-rose-600 text-white cursor-pointer"
 									>
 										Ver Curso
 									</Button>
@@ -361,7 +361,7 @@ export default function QuizLevelPage() {
 									<Button
 										size="sm"
 										variant="outline"
-										className="w-full"
+										className="w-full cursor-pointer"
 									>
 										Ver Material
 									</Button>
@@ -401,12 +401,6 @@ export default function QuizLevelPage() {
 				<div className="w-full max-w-2xl">
 					{/* Progress Bar */}
 					<div className="mb-6 flex items-center gap-4">
-						<Link
-							to="/quizzes"
-							className="text-gray-400 hover:text-gray-600"
-						>
-							<XCircle className="w-6 h-6" />
-						</Link>
 						<div className="flex-1 h-3 bg-gray-200 rounded-full overflow-hidden">
 							<div
 								className="h-full bg-brand-blue transition-all duration-500 ease-out"
@@ -422,8 +416,16 @@ export default function QuizLevelPage() {
 						{/* Question Header */}
 						<div className="mb-8">
 							{!config.adaptive && (
-								<div className="inline-block px-3 py-1 bg-blue-50 text-brand-blue text-xs font-bold uppercase rounded-full mb-4">
-									{question.level}
+								<div className="flex flex-row justify-between items-center">
+									<div className="inline-block px-3 py-1 bg-blue-50 text-brand-blue text-xs font-bold uppercase rounded-full mb-4">
+										{question.level}
+									</div>
+									<Link
+										to="/quizzes"
+										className="text-gray-400 hover:text-gray-600"
+									>
+										<XCircle className="w-10 h-10" />
+									</Link>
 								</div>
 							)}
 							<h2 className="text-2xl font-bold text-gray-900 leading-relaxed">
@@ -555,7 +557,7 @@ export default function QuizLevelPage() {
 
 						<Button
 							onClick={handleStart}
-							className="bg-rose-500 hover:bg-rose-600 text-white rounded-full px-12 py-8 text-xl shadow-xl shadow-rose-500/20 w-full sm:w-auto"
+							className="bg-rose-500 hover:bg-rose-600 text-white rounded-full px-12 py-6 text-xl shadow-xl shadow-rose-500/20 w-full sm:w-auto cursor-pointer"
 						>
 							Comenzar Quiz
 						</Button>

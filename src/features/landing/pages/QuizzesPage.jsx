@@ -31,10 +31,10 @@ const levels = [
 
 export default function QuizzesPage() {
 	return (
-		<div className="bg-white min-h-screen pb-20">
+		<div className="bg-white min-h-screen">
 			{/* Hero */}
-			<section className="bg-[#eef2ff] pt-40 pb-20 text-center px-4">
-				<div className="max-w-3xl mx-auto">
+			<section className="bg-[#eef2ff] pt-20 text-center px-4">
+				<div className="py-20 max-w-3xl mx-auto">
 					<h1 className="text-4xl md:text-5xl font-extrabold text-brand-dark mb-6 font-display">
 						Descubre tu nivel de inglés en minutos
 					</h1>
@@ -45,7 +45,7 @@ export default function QuizzesPage() {
                     <Link to="/quizzes/general">
                         <Button
                             size="lg"
-                            className="bg-rose-500 hover:bg-rose-600 text-white rounded-full px-8 shadow-lg shadow-rose-500/30"
+                            className="bg-rose-500 hover:bg-rose-600 text-white rounded-full px-8 shadow-lg shadow-rose-500/30 cursor-pointer"
                         >
                             Comenzar Quiz General
                         </Button>
@@ -55,15 +55,13 @@ export default function QuizzesPage() {
 
 			{/* Main Quiz Card */}
 			<div className="max-w-5xl mx-auto px-4 -mt-10 relative z-10 mb-20">
-				<div className="bg-white rounded-3xl shadow-xl p-6 md:p-10 flex flex-col md:flex-row gap-8 items-center border border-gray-100">
+				<div className="bg-indigo-50 rounded-3xl shadow-xl p-6 md:p-10 flex flex-col md:flex-row gap-8 items-center border border-indigo-300">
 					<div className="w-full md:w-1/2 aspect-video rounded-2xl overflow-hidden bg-gray-100 relative">
                         {/* Placeholder */}
-                        <div className="absolute inset-0 bg-brand-blue/10 flex items-center justify-center">
-                            <span className="text-4xl">🎓</span>
-                        </div>
+                        <img src="/src/assets/quizz/General.png" alt="" />
                     </div>
 					<div className="w-full md:w-1/2">
-						<div className="inline-block px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wide mb-4">
+						<div className="inline-block px-3 py-1 rounded-full bg-indigo-200 text-indigo-700 text-xs font-bold uppercase tracking-wide mb-4">
 							Quiz General
 						</div>
 						<h2 className="text-2xl font-bold text-gray-900 mb-4 font-display">
@@ -86,7 +84,7 @@ export default function QuizzesPage() {
                         <Link to="/quizzes/general" className="w-full sm:w-auto">
                             <Button
                                 variant="outline"
-                                className="w-full border-gray-300 text-gray-700 hover:bg-gray-50"
+                                className="w-full border-gray-300 text-gray-700 hover:bg-indigo-50 cursor-pointer hover:border-brand-blue hover:text-brand-blue rounded-full px-6 py-4"
                             >
                                 <PlayCircle className="w-4 h-4 mr-2" />
                                 Realizar test general
@@ -99,9 +97,9 @@ export default function QuizzesPage() {
 			{/* Levels Grid */}
 			<section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
 				<div className="text-center mb-12">
-					<h2 className="text-3xl font-bold text-brand-dark mb-4 font-display">
+					<h2 className="text-xl font-bold text-brand-dark mb-4 font-display">
 						¿Ya sabes tu nivel? Prueba nuestro <br />
-						<span className="text-brand-blue">
+						<span className="text-brand-blue text-4xl">
 							Quiz por niveles
 						</span>
 					</h2>
@@ -111,12 +109,13 @@ export default function QuizzesPage() {
 					{levels.map((level) => (
 						<div
 							key={level.id}
-							className="bg-white rounded-3xl p-6 border border-gray-100 shadow-lg hover:shadow-xl transition-shadow group"
+							className={ ` rounded-3xl p-6 border bg-${level.color}-50 border-${level.color}-500 shadow-lg hover:shadow-xl transition-shadow group`}
 						>
 							<div className="flex gap-4 mb-6">
 								<div className="w-24 h-24 shrink-0 rounded-2xl overflow-hidden bg-gray-100">
-                                    <div className={`w-full h-full bg-${level.color}-100`}></div>
-                                </div>
+                                    <img src="src/assets/quizz/Levels.png" alt="Imagen de nivel" className="object-cover w-full h-full" />
+								</div>
+								
 								<div>
 									<div
 										className={`inline-block px-2 py-0.5 rounded-full bg-${level.color}-100 text-${level.color}-700 text-[10px] font-bold uppercase mb-2`}
@@ -142,7 +141,7 @@ export default function QuizzesPage() {
                             <Link to={`/quizzes/${level.id}`} className="w-full">
                                 <Button
                                     variant="outline"
-                                    className="w-full rounded-full border-gray-200 hover:border-brand-blue hover:text-brand-blue"
+                                    className="w-full rounded-full border-gray-200 hover:border-brand-blue hover:text-brand-blue cursor-pointer"
                                 >
                                     Hacer Quiz {level.name.split(" ")[1]}
                                 </Button>
@@ -157,7 +156,7 @@ export default function QuizzesPage() {
                 <div className="max-w-7xl mx-auto px-4 text-center">
                     <h2 className="text-2xl font-bold text-brand-dark mb-12 font-display">
                         Al hacer el quiz que <br/>
-                        <span className="text-brand-blue">Beneficios obtendré</span>
+                        <span className="text-brand-blue text-4xl">Beneficios obtendré</span>
                     </h2>
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -180,7 +179,7 @@ export default function QuizzesPage() {
                     <div className="mt-16">
                         <p className="text-gray-600 mb-6 font-medium">"Evalúa tu nivel y mejora tu inglés con nuestros quizzes interactivos."</p>
                         <Link to="/quizzes/general">
-                            <Button className="bg-rose-500 hover:bg-rose-600 text-white rounded-full px-10 py-6 shadow-lg shadow-rose-500/20">
+                            <Button className="bg-rose-500 hover:bg-rose-600 text-white rounded-full px-10 py-6 shadow-lg shadow-rose-500/20 cursor-pointer">
                                 Comenzar Ahora
                             </Button>
                         </Link>
